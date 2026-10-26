@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website edukasi tentang pentingnya air bersih, sanitasi layak, dan cara menghemat air.">
+  <title>Air Bersih untuk Semua | SDG 6</title>
+
+  <style>
+    :root {
+      --blue: #087eaa;
+      --dark-blue: #075985;
+      --light-blue: #eaf7fc;
+      --green: #16805d;
+      --text: #243746;
+      --muted: #617584;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: #f8fcfe;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    /* Navigasi */
+    header {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid #e3eef3;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--dark-blue);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-cta,
+    .button {
+      background: var(--blue);
+      color: white;
+      padding: 11px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      display: inline-block;
+      transition: 0.25s;
+    }
+
+    .nav-cta:hover,
+    .button:hover {
+      background: var(--dark-blue);
+      transform: translateY(-2px);
+    }
+
+    /* Beranda */
+    .hero {
+      padding: 75px 0;
+      background:
+        radial-gradient(circle at 90% 15%, #c6f1e2 0, transparent 25%),
+        linear-gradient(135deg, #eaf7fc, #f6fffc);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--green);
+      background: #dff6eb;
+      padding: 7px 13px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      color: var(--dark-blue);
+      font-size: clamp(2.5rem, 5vw, 4.1rem);
+      line-height: 1.13;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.06rem;
+      margin-bottom: 27px;
+      max-width: 520px;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: 0 22px 55px #07598524;
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* Bagian umum */
+    section {
+      padding: 78px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 690px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading h2 {
+      color: var(--dark-blue);
+      font-size: clamp(1.8rem, 4vw, 2.65rem);
+      line-height: 1.25;
+      margin-bottom: 13px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* Kartu informasi */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 23px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e5eef2;
+      border-radius: 20px;
+      padding: 27px;
+      box-shadow: 0 8px 28px #12354b08;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 32px #12354b12;
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: var(--light-blue);
+      font-size: 1.65rem;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      color: var(--dark-blue);
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Masalah air */
+    .problems {
+      background: #edf8fb;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .problem-image {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+
+    .problem-content h2 {
+      color: var(--dark-blue);
+      font-size: 2.15rem;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .problem-content > p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .problem-item {
+      display: flex;
+      gap: 13px;
+      margin: 17px 0;
+    }
+
+    .check {
+      color: var(--green);
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .problem-item strong {
+      display: block;
+      color: var(--dark-blue);
+    }
+
+    .problem-item span {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    /* Tips */
+    .tip-card {
+      background: white;
+      padding: 24px;
+      border-radius: 18px;
+      border: 1px solid #e5eef2;
+    }
+
+    .tip-number {
+      color: var(--green);
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    /* Ajakan */
+    .callout {
+      background: linear-gradient(120deg, #075985, #087eaa);
+      color: white;
+      border-radius: 26px;
+      padding: 48px 35px;
+      text-align: center;
+    }
+
+    .callout h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.25;
+      margin-bottom: 15px;
+    }
+
+    .callout p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: #e3f5fc;
+    }
+
+    .button-light {
+      display: inline-block;
+      background: white;
+      color: var(--dark-blue);
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: 10px;
+    }
+
+    footer {
+      margin-top: 70px;
+      background: #063b59;
+      color: #d7eaf3;
+      padding: 32px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* Responsif untuk HP dan tablet */
+    @media (max-width: 800px) {
+      .hero-grid,
+      .problem-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero {
+        padding: 48px 0;
+      }
+
+      .hero-image {
+        height: 300px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 0.82rem;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .problem-image {
+        height: 260px;
+      }
+
+      .callout {
+        padding: 35px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#beranda">💧 AIR <span>BERSIH</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#penting">Manfaat</a></li>
+        <li><a href="#masalah">Permasalahan</a></li>
+        <li><a href="#tips">Tips</a></li>
+      </ul>
+
+      <a class="nav-cta" href="#aksi">Mulai Beraksi ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">SDG 6 · Air Bersih dan Sanitasi</span>
+          <h1>Air Bersih untuk Semua.</h1>
+          <p>
+            Air adalah sumber kehidupan yang harus kita jaga bersama.
+            Kenali pentingnya air bersih dan mulai kebiasaan sederhana
+            untuk menjaga ketersediaannya bagi masa depan.
+          </p>
+          <a class="button" href="#penting">Jelajahi Sekarang →</a>
+          <div class="hero-note">Setiap tetes air berharga. Mulai dari diri sendiri.</div>
+        </div>
+
+        <div>
+          <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&fit=crop&w=1000&q=85"
+            alt="Aliran air jernih di lingkungan alam"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="penting">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Kenali Manfaatnya</span>
+          <h2>Mengapa Air Bersih Penting?</h2>
+          <p>
+            Air bersih berperan besar dalam kesehatan, kebersihan,
+            dan keberlangsungan kehidupan manusia.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon">💧</div>
+            <h3>Menjaga Kesehatan</h3>
+            <p>Air yang aman digunakan untuk minum dan memasak membantu
+              menjaga kesehatan serta mengurangi risiko penyakit.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🧼</div>
+            <h3>Menjaga Kebersihan</h3>
+            <p>Ketersediaan air membantu kita mencuci tangan,
+              membersihkan lingkungan, dan menjaga sanitasi.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🌱</div>
+            <h3>Mendukung Kehidupan</h3>
+            <p>Manusia, hewan, tumbuhan, dan ekosistem membutuhkan
+              air agar dapat hidup dan berkembang.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="problems" id="masalah">
+      <div class="container problem-grid">
+        <img
+          class="problem-image"
+          src="https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=1000&q=85"
+          alt="Sampah dan pencemaran di lingkungan perairan"
+          loading="lazy"
+        >
+
+        <div class="problem-content">
+          <span class="eyebrow">Tantangan Kita</span>
+          <h2>Air Bersih Perlu Kita Jaga</h2>
+          <p>
+            Tidak semua orang memiliki akses yang mudah terhadap air
+            yang aman. Kebiasaan manusia dan kondisi lingkungan juga
+            dapat memengaruhi kualitas sumber air.
+          </p>
+
+          <div class="problem-item">
+            <span class="check">✓</span>
+            <div>
+              <strong>Pencemaran air</strong>
+              <span>Sampah dan limbah yang dibuang sembarangan dapat
+                merusak kualitas perairan.</span>
+            </div>
+          </div>
+
+          <div class="problem-item">
+            <span class="check">✓</span>
+            <div>
+              <strong>Pemborosan air</strong>
+              <span>Membiarkan keran mengalir tanpa digunakan membuat
+                air terbuang sia-sia.</span>
+            </div>
+          </div>
+
+          <div class="problem-item">
+            <span class="check">✓</span>
+            <div>
+              <strong>Akses air dan sanitasi</strong>
+              <span>Infrastruktur dan kondisi lingkungan dapat
+                memengaruhi akses masyarakat terhadap air aman.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tips">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Mulai dari Kebiasaan Kecil</span>
+          <h2>6 Cara Sederhana Menghemat Air</h2>
+          <p>
+            Kita tidak harus melakukan hal besar untuk memulai perubahan.
+            Biasakan langkah sederhana berikut setiap hari.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="tip-card">
+            <div class="tip-number">01</div>
+            <h3>Matikan Keran</h3>
+            <p>Tutup keran saat menyikat gigi atau ketika air tidak diperlukan.</p>
+          </article>
+
+          <article class="tip-card">
+            <div class="tip-number">02</div>
+            <h3>Gunakan Secukupnya</h3>
+            <p>Ambil air sesuai kebutuhan saat mandi, mencuci, dan memasak.</p>
+          </article>
+
+          <article class="tip-card">
+            <div class="tip-number">03</div>
+            <h3>Perbaiki Kebocoran</h3>
+            <p>Segera periksa keran atau pipa yang menetes terus-menerus.</p>
+          </article>
+
+          <article class="tip-card">
+            <div class="tip-number">04</div>
+            <h3>Jangan Buang Sampah</h3>
+            <p>Jaga sungai, selokan, dan sumber air agar tidak tercemar.</p>
+          </article>
+
+          <article class="tip-card">
+            <div class="tip-number">05</div>
+            <h3>Manfaatkan Air Hujan</h3>
+            <p>Jika aman dan sesuai kebutuhan, tampung air hujan untuk menyiram tanaman.</p>
+          </article>
+
+          <article class="tip-card">
+            <div class="tip-number">06</div>
+            <h3>Ajak Orang Lain</h3>
+            <p>Bagikan kebiasaan hemat air kepada keluarga dan teman.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="aksi">
+      <div class="container">
+        <div class="callout">
+          <h2>Perubahan Dimulai dari Kita 🌍</h2>
+          <p>
+            Air bersih bukan hanya kebutuhan hari ini, tetapi juga
+            bagian penting dari masa depan. Mari gunakan air dengan
+            bijak dan jaga sumbernya bersama-sama.
+          </p>
+          <a class="button-light" href="#beranda">Kembali ke Atas ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>💧 AIR BERSIH</strong>
+      <p>Website edukasi untuk mendukung SDG 6: Air Bersih dan Sanitasi Layak.</p>
+      <p>© 2026 · Dibuat untuk proyek website edukasi.</p>
+    </div>
+  </footer>
+</body>
+</html>
